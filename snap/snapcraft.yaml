@@ -1,0 +1,21 @@
+name: gauth
+version: '1.1' 
+summary: Script friendly Google Authenticator commandline
+description: |
+  A Google Authenticator commandline tool for your laptop/computer.
+  
+grade: devel 
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+parts:
+  go:
+    source-tag: go1.7.5
+  gauth:
+    after: [go]
+    plugin: go
+    source: .
+    go-importpath: github.com/tbaumann/gauth
+
+apps:
+  gauth:
+    command: gauth
